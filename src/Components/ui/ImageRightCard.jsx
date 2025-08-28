@@ -18,7 +18,6 @@ const ContentWrapper = styled.div`
 const ImageWrapper = styled.div`
   flex: 2;
   min-width: 300px;
-  width: max-content;
   padding-right: 50px;
   img {
     width: 100%;
