@@ -1,5 +1,6 @@
 body {
   font-family: "Lato", sans-serif;
+  overflow-x: hidden;
 }
 img {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

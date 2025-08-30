@@ -1,72 +1,101 @@
 import React from "react";
 import styled from "styled-components";
 
+// Responsive content wrapper
 const ContentWrapper = styled.div`
-  padding-bottom: 50px;
-  margin-top: 0;
-  padding-left: 250px;
-  padding-right: 50px;
-  padding-top: 60px;
+  padding: 3.75rem 3.125rem 3.125rem 2rem; /* top, right, bottom, left */
+
+  @media (max-width: 1024px) {
+    padding-left: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const CardComponentWrapper = styled.div`
   background-color: white;
 `;
+
 const ImageWrapper = styled.div`
-  min-width: 400px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 20px;
-  padding-bottom: 80px;
+  min-width: 25rem; /* 400px */
+  padding: 1.25rem 2rem 5rem 3.125rem;
+
   img {
-    width: 650px;
-    height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: cover;
     display: block;
-    box-shadow: 3px 3px 24px 10px rgb(0, 0, 0);
-    border-radius: 20px;
+    box-shadow: 0.1875rem 0.1875rem 1.5rem 0.625rem rgba(0, 0, 0, 1);
+    border-radius: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    min-width: 80%;
   }
 `;
 
 const CardWrapper = styled.div`
   display: flex;
   color: #800000;
-  align-items: normal;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  align-items: flex-start;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
   overflow: hidden;
-  max-width: 100vw;
   margin: 0;
-  padding-right: 50px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
 `;
 
 const Description1 = styled.p`
   margin-top: 0;
-  font-size: 25px;
-  width: 700px;
+  font-size: 1.5625rem; /* 25px */
   word-wrap: break-word;
-  overflow-wrap: break-word;
   white-space: pre-line;
   font-weight: 800;
   text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    text-align: center;
+  }
 `;
+
 const Description2 = styled.p`
   font-weight: 400;
-  font-size: 20px;
-  padding-top: 10px;
+  font-size: 1.25rem; /* 20px */
+  padding-top: 0.625rem; /* 10px */
   color: #575757;
   font-family: Lato, sans-serif;
   text-align: justify;
-  width: 650px;
   white-space: pre-line;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    max-width: 100%;
+  }
 `;
 
 const StyledItem = styled.div`
   display: grid;
   grid-template-columns: 2fr 2fr;
-  margin-top: 0;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    display: grid;
+    width: 100%vw;
+    grid-template-columns: 1fr;
+  }
 `;
 
+// Component
 const DetailsImageLeftCard = ({
   imageSrc,
   title,

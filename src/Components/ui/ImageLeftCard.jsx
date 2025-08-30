@@ -11,49 +11,127 @@ import {
   StyledButton,
   ButtonWrapper,
 } from "../css/Card";
+
+// Base Text Wrapper
 const ContentWrapper = styled.div`
-  flex: 2;
-  padding-top: 60px;
-  padding-bottom: 50px;
+  flex: 1; /* take remaining space */
+  padding: 0 1rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
 `;
-const ImageWrapper = styled.div`
+
+// Base Image Wrapper
+const BaseImageWrapper = styled.div`
   flex: 1;
-  min-width: 300px;
-  padding-right: 50px;
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1.25rem;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    min-width: 100%;
+  }
+`;
+
+// For Left Variant
+const ImageLeftWrapper = styled(BaseImageWrapper)`
+  flex: 0 0 50%; /* image takes 50% of row */
+  box-sizing: border-box; /* include padding inside width */
+  padding: 2rem;
+  max-width: 50%; /* ensure it doesn’t exceed 50% */
+  height: 28rem;
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 1rem;
     display: block;
-    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
   }
 `;
-export const HeadWrapper = styled.h1`
+
+const HeadWrapper = styled.h1`
   text-align: center;
   text-decoration: underline;
   margin: auto;
-  height: auto;
-  font-wieght: 500;
+  font-weight: 500;
   color: #800000;
-  font-size: 10.5emm;
-  background-color: white;
-  box-shadow: 0px 0px 0px rgba(2, 2, 12, 0.91);
+  font-size: 3rem;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    padding-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    padding-top: 2.5rem;
+  }
+`;
+
+const ResponsiveCardWrapper = styled(CardWrapper)`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1rem; /* add small horizontal padding */
+  max-width: 82rem;
+  margin: 0 auto;
+  flex-wrap: nowrap; /* prevent stacking on desktop */
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* stack on mobile only */
+    align-items: center;
+    text-wrap-style: pretty;
+    gap: 1.5rem;
+  }
+`;
+
+const StyledCardComponentWrapper = styled(CardComponentWrapper)`
+  height: auto; /* allow the card to expand with content */
+  min-height: 30rem; /* optional: ensure some base height */
+  padding: 2rem 1rem; /* spacing inside card */
+  box-sizing: border-box; /* include padding in height/width */
 `;
 
 const ImageLeftCard = ({ imageSrc, title, description1, description2 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
   const handleTrustServices = () => {
     navigate("/services");
   };
 
   return (
-    <CardComponentWrapper>
+    <StyledCardComponentWrapper>
       <HeadWrapper>{t("our_mission_title")}</HeadWrapper>
-      <CardWrapper>
-        <ImageWrapper>
+      <ResponsiveCardWrapper>
+        <ImageLeftWrapper>
           <img src={imageSrc} alt={title} />
-        </ImageWrapper>
+        </ImageLeftWrapper>
         <ContentWrapper>
           <CardTitle>{title}</CardTitle>
           <Description1>{description1}</Description1>
@@ -64,8 +142,8 @@ const ImageLeftCard = ({ imageSrc, title, description1, description2 }) => {
             </StyledButton>
           </ButtonWrapper>
         </ContentWrapper>
-      </CardWrapper>
-    </CardComponentWrapper>
+      </ResponsiveCardWrapper>
+    </StyledCardComponentWrapper>
   );
 };
 

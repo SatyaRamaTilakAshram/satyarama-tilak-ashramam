@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Header } from "../ui/Header";
-import before_after_lord_shiva from "../../Images/before_after_lord_shiva.png";
-import shiva_108_pillar_temple from "../../Images/shiva_108_pillar_temple.png";
+import before_after_lord_shiva from "../../Images/before_after_lord_shiva.jpeg";
+import shiva_108_pillar_temple from "../../Images/shiva_108_pillar_temple.jpeg";
 import swamy from "../../Images/swamy.jpg";
 import serving_food_to_people from "../../Images/serving_food_to_people.jpg";
-import temple_with_clouds from "../../Images/temple_with_clouds.png";
+import temple_with_clouds from "../../Images/temple_with_clouds.jpeg";
 import ishta from "../../Images/ishta.jpg";
 import annapurnadevi from "../../Images/annapurnadevi.jpg";
 import DetailsImageLeftCard from "../ui/DetailsImageLeftCard";
@@ -19,11 +19,11 @@ const HistoryWrapper = styled.div`
 
 const PaddingComp = styled.div`
   background-color: white;
-  padding-top: 100px;
+  padding-top: 6rem;
 `;
 const StyledTitle = styled.h1`
   text-align: center;
-  font-size: 30px;
+  font-size: 2rem;
   color: #2c2c2c;
   border-bottom: 2px solid #653399;
   &:hover {
@@ -31,7 +31,11 @@ const StyledTitle = styled.h1`
   }
   display: inline-block;
   padding-bottom: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  @media (max-width: 768px) {
+    padding: 1rem;
+    justify-content: center;
+  }
 `;
 const TitleWrapper = styled.div`
   text-align: center;

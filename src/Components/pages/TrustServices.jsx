@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Header } from "../ui/Header";
-import founder from "../../Images/ServiceImages/founder.png";
+import founder from "../../Images/founder.jpeg";
 import water_service_for_poor from "../../Images/ServiceImages/water_service_for_poor.jpg";
-import serving_food from "../../Images/ServiceImages/serving_food.png";
-import before_and_after from "../../Images/ServiceImages/before_after_house.png";
+import serving_food from "../../Images/ServiceImages/serving_food.jpeg";
+import before_and_after from "../../Images/ServiceImages/before_after_house.jpeg";
 //import before_and_after_house from "../../Images/ServiceImages/before_after_house.png";
 import old_people_charity1 from "../../Images/old_people_charity1.jpg";
 import DetailsImageLeftCard from "../ui/DetailsImageLeftCard";
@@ -13,27 +13,35 @@ import { useTranslation } from "react-i18next";
 import Footer from "../ui/Footer";
 const ServicesWrapper = styled.div`
   background-color: white;
+  @media (max-width: 768px) {
+  }
 `;
 
 const PaddingComp = styled.div`
   background-color: white;
-  padding-top: 100px;
+  padding-top: 6rem;
+  @media (max-width: 768px) {
+    padding-top: 4rem;
+  }
 `;
 const StyledTitle = styled.h1`
   text-align: center;
-  font-size: 30px;
+  font-size: 2rem;
   color: #2c2c2c;
   border-bottom: 2px solid #653399;
   &:hover {
     border-bottom: 4px solid #653399;
   }
   display: inline-block;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const StyledSubTitle = styled.h2`
-  font-size: 21px;
+  font-size: 1.5rem;
   text-align: center;
-  color: 444444;
+  color: #444444;
 `;
 const TitleWrapper = styled.div`
   text-align: center;

@@ -1,68 +1,92 @@
 import React from "react";
 import styled from "styled-components";
 
-const ContentWrapper = styled.div`
-  padding-bottom: 50px;
-  margin-top: 0;
-  padding-left: 250px;
-  padding-top: 60px;
-  padding-right: 1000px;
-`;
-
 const CardComponentWrapper = styled.div`
   background-color: white;
-`;
-const ImageWrapper = styled.div`
-  min-width: 400px;
-  padding-right: 50px;
-  padding-left: 50px;
-  padding-top: 20px;
-  padding-bottom: 80px;
-  img {
-    width: 650px;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    box-shadow: 3px 3px 24px 10px rgb(0, 0, 0);
-    border-radius: 20px;
-  }
+  padding: 2rem 1rem;
 `;
 
 const CardWrapper = styled.div`
   display: flex;
-  color: #800000;
-  align-items: normal;
+  justify-content: center;
+  align-items: flex-start;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
-  max-width: 100vw;
-  margin: 0;
+  max-width: 83rem;
+  margin: 0 auto;
+  flex-wrap: wrap; /* allow wrapping on mobile */
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const StyledItem = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem; /* spacing between image and content */
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr; /* stack on smaller screens */
+  }
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+
+  img {
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    box-shadow: 3px 3px 24px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+  }
+  @media (max-width: 768px) {
+    padding: 1rem;
+    min-width: 80%;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  padding: 1rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const Description1 = styled.p`
-  margin-top: 0;
-  font-size: 25px;
-  width: 700px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
+  font-size: 1.2rem;
   font-weight: 800;
   text-align: left;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  color: #800000;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-align: center;
+  }
 `;
 
 const List = styled.ul`
   list-style-type: disc;
-  padding-left: 20px;
+  padding-left: 1.5rem;
   margin: 0;
+  @media (max-width: 768px) {
+    list-style-type: none;
+  }
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 2px;
-  padding: 10px 15px;
   margin-bottom: 8px;
-  max-width: 600px;
-  font-size: 20px;
-  background-color: #ffffff;
+  padding: 8px 12px;
+  font-size: 1rem;
   border-radius: 6px;
   text-align: left;
   color: #444;
@@ -73,12 +97,10 @@ const ListItem = styled.li`
   &:hover {
     background-color: #e9ecef;
   }
-`;
 
-const StyledItem = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  margin-top: 0;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const ImageLeftWithListContent = ({

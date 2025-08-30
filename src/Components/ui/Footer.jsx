@@ -2,72 +2,143 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import trust_logo from "../../trust_logo.png";
+
 const MainContainer = styled.div`
-  padding-left: 50px;
-  padding-top: 10px;
-  padding-bottom: 30px;
+  padding: 1rem 2rem;
   background-color: #3a1364ff;
   color: white;
-  margin-bottom: 0px;
+  margin-bottom: 0;
+  @media (max-width: 768px) {
+    flex-direction: row;
+  }
 `;
-const AddressContainer = styled.div``;
+
+const AddressContainer = styled.div`
+  text-align: left;
+  justify-self: start; /* align to left within grid */
+  padding-left: 1rem; /* add equal inner padding */
+`;
+
 const Address = styled.p`
   white-space: pre-line;
   margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 `;
-const QuickLinksContainer = styled.div`
-  padding-left: 70px;
-`;
-const StayConnectedContainer = styled.div``;
-const AddressTitle = styled.h2`
-  margin-bottom: 10px;
-`;
-const StayConnectedTitle = styled.h2`
-  margin-bottom: 10px;
-`;
-const QuickLinksTitle = styled.h2`
-  margin-bottom: 10px;
-`;
-const NavWrapper = styled.div``;
 
-const LineSeparator = styled.hr`
-  margin-top: 0px;
-  color: white;
+const StayConnectedContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* keep title right aligned */
+  justify-self: end;
+  padding-right: 1rem;
 `;
+
+const AddressTitle = styled.h2`
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+`;
+
+const StayConnectedTitle = styled.h2`
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  text-align: right; /* explicit right alignment */
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+const NavWrapper = styled.div``;
+const QuickLinksContainer = styled.div`
+  display: flex;
+  justify-content: center; /* center this section in its column */
+`;
+
+const InnerQuickLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* title + links left aligned */
+`;
+
+const QuickLinksTitle = styled.h2`
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  text-align: left; /* ensure left-aligned */
+`;
+
 const NavLinks = styled.nav`
-  display: grid;
-  grid-row-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: flex-start; /* left align */
+  margin-top: 0.5rem;
+
   a {
     text-decoration: none;
     color: white;
     font-weight: 500;
     font-size: 20px;
-    padding-right: 25px;
-    padding-bottom: 2px;
-    padding-left: 2px;
+    margin-bottom: 6px;
+
     &:hover {
       color: white;
       text-decoration: underline;
     }
   }
 `;
+
+const LineSeparator = styled.hr`
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid white;
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  justify-content: center; /* center logo horizontally */
+  width: 100%; /* take full column width */
+  margin-top: 0.5rem;
+`;
+
 const StyledLogo = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 15px;
-  margin-left: 30px;
-  display: block;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
 `;
+
 const RowContainer = styled.div`
-  margin-top: 0px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr); /* equal columns */
+  gap: 2rem;
+  padding-top: 2rem; /* equal padding all around */
+  padding-bottom: 2rem;
+  padding-left: 3rem;
+  padding-right: 5rem;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1rem;
+  }
 `;
+
 const CopyRightTitle = styled.p`
   display: flex;
   justify-content: center;
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
 `;
-const CopyRightWrapper = styled.div``;
+
+const CopyRightWrapper = styled.div`
+  padding: 1rem;
+  margin: 0;
+`;
+
 const Footer = () => {
   const { t } = useTranslation();
   return (
@@ -78,22 +149,29 @@ const Footer = () => {
             <AddressTitle>{t("address_title")}</AddressTitle>
             <Address>{t("address")}</Address>
           </AddressContainer>
+
           <QuickLinksContainer>
-            <QuickLinksTitle>{t("quick_links")}</QuickLinksTitle>
-            <NavWrapper>
-              <NavLinks>
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
-                <Link to="/contact">Contact</Link>
-              </NavLinks>
-            </NavWrapper>
+            <InnerQuickLinks>
+              <QuickLinksTitle>{t("quick_links")}</QuickLinksTitle>
+              <NavWrapper>
+                <NavLinks>
+                  <Link to="/">{t("home")}</Link>
+                  <Link to="/about">{t("about")}</Link>
+                  <Link to="/contact">{t("contact")}</Link>
+                </NavLinks>
+              </NavWrapper>
+            </InnerQuickLinks>
           </QuickLinksContainer>
+
           <StayConnectedContainer>
             <StayConnectedTitle>{t("stay_connected")}</StayConnectedTitle>
-            <StyledLogo src={trust_logo} />
+            <LogoWrapper>
+              <StyledLogo src={trust_logo} alt="Trust Logo" />
+            </LogoWrapper>
           </StayConnectedContainer>
         </RowContainer>
       </MainContainer>
+
       <LineSeparator />
       <CopyRightWrapper>
         <CopyRightTitle>{t("copy_right_warning")}</CopyRightTitle>
@@ -101,4 +179,5 @@ const Footer = () => {
     </>
   );
 };
+
 export default Footer;

@@ -2,68 +2,107 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
+// Content Wrapper
 const ContentWrapper = styled.div`
-  margin-top: 0;
-  padding-top: 60px;
-  padding-bottom: 30px;
-  padding-left: 50px;
-`;
+  padding: 3.75rem 1rem 1.875rem 3.125rem;
 
+  @media (max-width: 1024px) {
+    padding: 2.5rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+`;
+// Card outer wrapper
 const CardComponentWrapper = styled.div`
   background-color: white;
 `;
+
+// Image wrapper with padding
 const ImageWrapper = styled.div`
-  min-width: 400px;
-  padding-top: 20px;
-  padding-bottom: 80px;
-  padding-right: 50px;
+  flex: 1;
+  min-width: 25rem; /* 400px */
+  padding: 1.25rem 3.125rem 5rem 1rem;
+
   img {
-    width: 650px;
-    height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: cover;
     display: block;
-    box-shadow: 3px 3px 24px 10px rgb(0, 0, 0);
-    border-radius: 20px;
+    box-shadow: 0.1875rem 0.1875rem 1.5rem 0.625rem rgba(0, 0, 0, 1);
+    border-radius: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    width: 90%;
   }
 `;
 
+// Card container with layout behavior
 const CardWrapper = styled.div`
   display: flex;
   color: #800000;
-  align-items: normal;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  align-items: flex-start;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
   overflow: hidden;
-  max-width: 100vw;
   margin: 0;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
 `;
 
+// Text section
 const Description1 = styled.p`
   margin-top: 0;
-  font-size: 25px;
-  width: 700px;
+  font-size: 1.5625rem; /* 25px */
   word-wrap: break-word;
-  overflow-wrap: break-word;
   white-space: normal;
   font-weight: 800;
   text-align: left;
+  max-width: 43.75rem; /* 700px */
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    max-width: 100%;
+  }
 `;
+
 const Description2 = styled.p`
   font-weight: 400;
-  font-size: 20px;
-  padding-top: 10px;
+  font-size: 1.25rem; /* 20px */
+  padding-top: 0.625rem;
   color: #575757;
   font-family: Lato, sans-serif;
   text-align: justify;
-  width: 650px;
+  max-width: 40.625rem; /* 650px */
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    max-width: 100%;
+  }
 `;
 
+// Grid wrapper that becomes column on small screens
 const StyledItem = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 1.5em;
+    padding-left: 1.5rem;
+  }
 `;
 
+// Component
 const DetailsImageRightCard = ({
   imageSrc,
   title,

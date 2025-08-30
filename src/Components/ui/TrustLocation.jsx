@@ -3,24 +3,34 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
-  padding-top: 40px;
-  padding-right: 80px;
-  padding-left: 120px;
-  padding-bottom: 40px;
+  padding: 2.5rem 5rem 2.5rem 7.5rem; /* top, right, bottom, left */
   background-color: #f9f9f9;
+
+  @media (max-width: 1024px) {
+    padding: 2rem 3rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
-  margin: 0px;
+  max-width: 75rem; /* 1200px */
+  margin: 0 auto;
 `;
 
 const Heading = styled.h2`
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 30px;
+  font-size: 2rem; /* 32px */
+  margin-bottom: 1.875rem; /* 30px */
   color: #0d2c54;
   margin-top: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const FlexWrapper = styled.div`
@@ -29,16 +39,21 @@ const FlexWrapper = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    gap: 40px;
+    gap: 2.5rem; /* 40px */
   }
 `;
 
 const MapContainer = styled.div`
   flex: 1;
-  min-height: 450px;
-  border-radius: 12px;
+  min-height: 28.125rem; /* 450px */
+  border-radius: 0.75rem; /* 12px */
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 const StyledIframe = styled.iframe`
@@ -50,20 +65,29 @@ const StyledIframe = styled.iframe`
 const InfoCard = styled.div`
   flex: 1;
   background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.875rem; /* 30px */
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+    text-align: center;
+  }
 `;
 
 const InfoSection = styled.div`
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem; /* 24px */
 `;
 
 const InfoTitle = styled.h3`
   white-space: pre-line;
   color: #0d2c54;
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-size: 1.125rem; /* 18px */
+  margin-bottom: 0.5rem; /* 8px */
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const InfoText = styled.p`
@@ -71,6 +95,11 @@ const InfoText = styled.p`
   margin: 0;
   line-height: 1.6;
   color: #333;
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9375rem; /* 15px */
+  }
 `;
 
 const TrustLocation = () => {

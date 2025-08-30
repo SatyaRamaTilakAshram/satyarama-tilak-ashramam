@@ -1,55 +1,103 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { StyledButton, ButtonWrapper } from "../css/Card";
 import {
   CardComponentWrapper,
   CardWrapper,
   CardTitle,
   Description1,
   Description2,
+  StyledButton,
+  ButtonWrapper,
 } from "../css/Card";
+
+// Reuse the same ContentWrapper from Left
 const ContentWrapper = styled.div`
   flex: 1;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  padding-right: 20px;
+  margin-left: 2rem;
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    text-align: center;
+  }
 `;
-const ImageWrapper = styled.div`
-  flex: 2;
-  min-width: 300px;
-  padding-right: 50px;
+
+// Base Image Wrapper
+const BaseImageWrapper = styled.div`
+  flex: 1;
+  min-width: 40%;
+
   img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    border-radius: 1.25rem;
     display: block;
-    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    min-width: 100%;
+  }
+`;
+
+// For Right Variant
+const ImageRightWrapper = styled(BaseImageWrapper)`
+  padding: 2rem;
+  @media (max-width: 768px) {
+    padding: 0;
+    margin-top: 2rem;
+  }
+`;
+
+const ResponsiveCardWrapper = styled(CardWrapper)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 82rem;
+  margin: 0 auto;
+  flex-wrap: nowrap; /* prevent stacking on desktop */
+  box-sizing: border-box;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 2%;
   }
 `;
 
 const ImageRightCard = ({ imageSrc, title, description1, description2 }) => {
   const navigate = useNavigate();
-  const handleFullHisoty = () => {
+
+  const handleFullHistory = () => {
     navigate("/history");
   };
+
   return (
     <CardComponentWrapper>
-      <CardWrapper>
+      <ResponsiveCardWrapper>
         <ContentWrapper>
           <CardTitle>{title}</CardTitle>
           <Description1>{description1}</Description1>
           <Description2>{description2}</Description2>
           <ButtonWrapper>
-            <StyledButton onClick={handleFullHisoty}>
+            <StyledButton onClick={handleFullHistory}>
               View Full History
             </StyledButton>
           </ButtonWrapper>
         </ContentWrapper>
-        <ImageWrapper>
+        <ImageRightWrapper>
           <img src={imageSrc} alt={title} />
-        </ImageWrapper>
-      </CardWrapper>
+        </ImageRightWrapper>
+      </ResponsiveCardWrapper>
     </CardComponentWrapper>
   );
 };
