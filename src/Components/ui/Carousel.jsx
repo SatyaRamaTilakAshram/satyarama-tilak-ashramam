@@ -234,7 +234,7 @@ const CarouselComponent = () => {
         </CarouselWrapper>
         <FounderDescription>
           <TrustDescription1>{t("trust_subheading1")}</TrustDescription1>
-          {currentLanguage === "en" ? (
+          {currentLanguage === "en" || currentLanguage === "en-US" ? (
             <TrustDescription2>
               <Bold>{t("trust_description1")}</Bold>
               {t("trust_description2")}
